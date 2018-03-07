@@ -22,19 +22,4 @@
 			</div>
 		</div>
 	</div>
-	<ng-template #content let-c="close" let-d="dismiss">
-		<div class="modal-header">
-			<h4 class="modal-title">Are you sure?</h4>
-			<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>
-		<div class="modal-body">
-			<p>{{ markedForDeletion.length }} items will be deleted</p>
-		</div>
-		<div class="modal-footer">
-			<button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
-			<button type="button" class="btn btn-danger" (click)="delete(event)">Confirm</button>
-		</div>
-	</ng-template>
 </div>

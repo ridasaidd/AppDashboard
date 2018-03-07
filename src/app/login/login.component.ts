@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../router.animations';
+import { AuthGuard } from '../shared/';
 
 import { NgForm } from '@angular/forms';
 
-import { LoginDTO } from './login-dto';
-import { LoginService } from './login.service';
+import { LoginDTO } from './../shared/dto/login-dto';
 
 @Component({
     selector: 'app-login',
@@ -15,32 +15,31 @@ import { LoginService } from './login.service';
 })
 export class LoginComponent implements OnInit {
 
-    private credentials: LoginDTO;
+    public credentials: LoginDTO;
 
-    constructor (private login: LoginService, public router: Router) {}
+    constructor (public router: Router, public auth: AuthGuard) { }
 
     ngOnInit() {
-
-        this.credentials = new LoginDTO({
-            username: '',
-            password: '',
-            rememberMe: false
-        });
+        this.isLoggedIn();
     }
 
-    onLoggedin() {
-        // localStorage.setItem('isLoggedin', 'true');
+    private isLoggedIn(): void {
+        if ( sessionStorage.getItem('isLoggedin') ) {
+            this.router.navigateByUrl('/dashboard');
+    }
     }
 
-    doLogin(value): void {
+    private doLogin(value): void {
         this.credentials = value.form.value;
-        if ( this.login.check(this.credentials) ) {
-            sessionStorage.setItem('user', JSON.stringify( { username: this.credentials.username } ));
-            localStorage.setItem('isLoggedin', 'true');
+        if ( this.auth.authenticate(this.credentials) ) {
             this.router.navigateByUrl('/dashboard');
         } else {
-            console.log('User not found!');
+            alert('User not found!');
         }
+        }
+
+    private isRegisterActive(): boolean {
+        return false;
     }
 
 }

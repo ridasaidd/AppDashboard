@@ -1,0 +1,17 @@
+.add-button {
+    position: fixed;
+    right: 1%;
+    bottom: 5%; 
+    a {
+        display: block;
+        padding: 35px 40px;
+        border: thin solid #111;
+        background-color: #222;
+        border-radius: 100%;
+        outline: none;
+    }
+    i {
+        color: #fff;
+        font-size: 20px;
+    }
+}

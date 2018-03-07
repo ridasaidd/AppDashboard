@@ -1,27 +1,40 @@
 import { Injectable } from '@angular/core';
+import { UserDTO } from './../dto/user-dto';
 
 @Injectable()
 export class UserService {
 
   // private collection: 'users';
 
-  private mock = [{
-    id: 1,
+  private mock: UserDTO[] = [{
     username: 'coldfire',
-    password: 'caramail'
+    email: 'rida_538@hotmail.com',
+    firstName: 'rida',
+    lastName: 'said',
+    password: 'caramail',
+    pwd1: 'caramail',
+    pwd2: 'caramail'
   }, {
-    id: 2,
     username: 'ridasaidd',
-    password: 'caramail'
+    email: 'rida_538@hotmail.com',
+    firstName: 'rida',
+    lastName: 'said',
+    password: 'caramail',
+    pwd1: 'caramail',
+    pwd2: 'caramail'
   }, {
-    id: 3,
     username: 'adam',
-    password: 'chaddaev'
+    email: 'rida_538@hotmail.com',
+    firstName: 'Adam',
+    lastName: 'Adam',
+    password: 'caramail',
+    pwd1: 'caramail',
+    pwd2: 'caramail'
   }];
 
   constructor() { }
 
-  public getUserBy(username: string): any {
+  public getUserBy(username: string): UserDTO | boolean {
     for ( let i = 0; i < this.mock.length; i++ ) {
       if (this.mock[i].username === username) {
         return this.mock[i];
@@ -30,8 +43,27 @@ export class UserService {
     return false;
   }
 
-  public getAll(): any[] {
+  public getAll(): UserDTO[] {
     return this.mock;
+  }
+
+  public create(user: UserDTO): boolean {
+    if (user.pwd1 === user.pwd2) {
+      user.password = user.pwd1;
+      this.mock.push(user);
+      return true;
+    }
+    return false;
+  }
+
+  public delete(username: string): boolean {
+    for ( let i = 0; i < this.mock.length; i++ ) {
+      if (this.mock[i].username === username) {
+        this.mock.splice(i, 1);
+        return true;
+      }
+    }
+    return false;
   }
 
 }

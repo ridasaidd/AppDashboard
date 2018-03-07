@@ -1,0 +1,30 @@
+<div [@routerTransition]>
+  <app-page-header [heading]="heading" [icon]="'fa fa-plus'"></app-page-header>
+    <div class="row">
+        <div class="col-md-12">
+            <form #CreateUserForm="ngForm" (ngSubmit)="create(CreateUserForm)">
+                <div class="form-content">
+                    <div class="form-group">
+                        <input type="text" name="username" class="form-control input-underline input-md" id="createFormUSername" placeholder="Username" [(ngModel)]="userDTO.username">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="firstName" class="form-control input-underline input-md" id="createFormFirstName" placeholder="First name" [(ngModel)]="userDTO.firstName">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="lastName" class="form-control input-underline input-md" id="createFormLastName" placeholder="Last name" [(ngModel)]="userDTO.lastName">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control input-underline input-md" id="createFormEmail" placeholder="E-mail" [(ngModel)]="userDTO.email">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="pwd1" class="form-control input-underline input-md" id="createFormPwd1" placeholder="password" [(ngModel)]="userDTO.pwd1">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="pwd2" class="form-control input-underline input-md" id="createFormPwd2" placeholder="password" [(ngModel)]="userDTO.pwd2">
+                    </div>
+                </div>
+                <button class="button" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

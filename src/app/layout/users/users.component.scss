@@ -1,0 +1,20 @@
+.user-list {
+    li {
+        a:first-child {
+            float: left;
+            width: 50%;
+            height: 100%;
+        }
+        a {
+            float: right;
+            margin: 0 10px;
+            color: #212529;
+        }
+        i {
+            font-size: 25px;
+        }
+    }
+}
+ul.user-list li:hover {
+    background-color: #eee;
+}

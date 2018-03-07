@@ -6,16 +6,16 @@
             <form #loginForm="ngForm" (ngSubmit)="doLogin(loginForm)">
                 <div class="form-content">
                     <div class="form-group">
-                        <input type="text" class="form-control input-underline input-lg" id="loginFormUsername" placeholder="Email" name="username" [ngModel]="login.username">
+                        <input type="text" class="form-control input-underline input-lg" id="loginFormUsername" placeholder="Username" name="username" [ngModel]="auth.username">
                     </div>
 
                     <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="loginFormPassword" placeholder="Password" name="password" [ngModel]="login.password">
+                        <input type="password" class="form-control input-underline input-lg" id="loginFormPassword" placeholder="Password" name="password" [ngModel]="auth.password">
                     </div>
                 </div>
                 <button class="btn rounded-btn" type="submit"> Log in </button>
                 &nbsp;
-                <a class="btn rounded-btn" [routerLink]="['/signup']">Register</a>
+                <a class="btn rounded-btn" [routerLink]="['/signup']" [hidden]="!isRegisterActive()">Register</a>
             </form>
         </div>
     </div>

@@ -1,0 +1,16 @@
+<div [@routerTransition]>
+	<app-page-header [heading]="'Users'" [icon]="'fa fa-users'"></app-page-header>
+	
+	<div class="row">
+		<div class="col col-xl-12 col-lg-12">
+            <ul class="list-group list-group-flush user-list">
+                <li class="list-group-item" *ngFor="let user of getAllUsers()">
+                    <a [routerLink]="['edit', user.username]">{{ user.username }}</a>
+                    <a (click)="delete(user.username)"><i class="fa fa-trash"></i></a>
+                </li>
+            </ul>
+            <app-simple-editor></app-simple-editor>
+            <app-add-button></app-add-button>
+		</div>
+	</div>
+</div>

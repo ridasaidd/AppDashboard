@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from './shared/shared.module';
+
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -33,11 +35,12 @@ export function createTranslateLoader(http: HttpClient) {
                 deps: [HttpClient]
             }
         }),
-        AppRoutingModule
+        AppRoutingModule,
+        SharedModule
     ],
     exports: [],
     declarations: [AppComponent],
-    providers: [AuthGuard],
+    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
