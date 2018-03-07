@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { LoginDTO } from './../dto/login-dto';
 import { UserService } from './../services/user.service';
+import { UserDTO } from '../dto/user-dto';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -20,7 +21,7 @@ export class AuthGuard implements CanActivate {
 
     public authenticate(user: LoginDTO): boolean {
         const theUser = this.user.getUserBy(user.username);
-        if (theUser !== false) {
+        if (this.isUser(theUser)) {
             if (theUser.username === user.username && theUser.password === user.password) {
                 sessionStorage.setItem('user', JSON.stringify({username: theUser.username}));
                 sessionStorage.setItem('isLoggedin', 'true');
@@ -29,8 +30,11 @@ export class AuthGuard implements CanActivate {
         }
         return false;
     }
-    public logout() {
+    public logout(): boolean {
         sessionStorage.removeItem('isLoggedin');
         return true;
+    }
+    private isUser(theUser: UserDTO | boolean): theUser is UserDTO {
+        return (<UserDTO>theUser) !== undefined;
     }
 }

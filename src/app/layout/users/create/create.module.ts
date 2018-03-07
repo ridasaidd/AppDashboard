@@ -8,6 +8,8 @@ import { CreateComponent } from './create.component';
 
 import { SharedModule } from './../../../shared/shared.module';
 
+import { CreateForm } from './createForm';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +17,6 @@ import { SharedModule } from './../../../shared/shared.module';
     FormsModule, ReactiveFormsModule,
     SharedModule
   ],
-  declarations: [CreateComponent]
+  declarations: [CreateComponent],
 })
 export class CreateModule { }
