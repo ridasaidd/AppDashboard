@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
 
     private doLogin(): void {
         if (this.loginForm.valid) {
-         // console.log(this.loginForm.value);
           if (this.auth.authenticate(this.loginForm.value)) {
             console.log(this.loginForm.value);
             this.router.navigate(['dashboard']);
@@ -44,12 +43,6 @@ export class LoginComponent implements OnInit {
             alert('The user ' + this.loginForm.value.username + ' does not exist!');
           }
         }
-        /*this.credentials = value.form.value;
-        if ( this.auth.authenticate(this.credentials) ) {
-            this.router.navigateByUrl('/dashboard');
-        } else {
-            alert('User not found!');
-        }*/
       }
 
     private isRegisterActive(): boolean {
