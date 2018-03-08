@@ -5,22 +5,22 @@
             <form [formGroup]="createForm">
                 <div class="form-content">
                     <div class="form-group">
-                        <input type="text" [value]="userDTO.username" formControlName="username" placeholder="Username" class="form-control input-underline input-md">
+                        <input type="text" [value]="userDTO.username || ''" formControlName="username" placeholder="Username" class="form-control input-underline input-md">
                     </div>
                     <div class="form-group">
-                        <input type="email" [value]="userDTO.email" formControlName="email" placeholder="E-mail" class="form-control input-underline input-md">
+                        <input type="email" [value]="userDTO.email || ''" formControlName="email" placeholder="E-mail" class="form-control input-underline input-md">
                     </div>
                     <div class="form-group">
-                        <input type="text" [value]="userDTO.firstName" formControlName="firstName" placeholder="First name" class="form-control input-underline input-md">
+                        <input type="text" [value]="userDTO.firstName || ''" formControlName="firstName" placeholder="First name" class="form-control input-underline input-md">
                     </div>
                     <div class="form-group">
-                        <input type="text" [value]="userDTO.lastName" formControlName="lastName" placeholder="Last name" class="form-control input-underline input-md">
+                        <input type="text" [value]="userDTO.lastName || ''" formControlName="lastName" placeholder="Last name" class="form-control input-underline input-md">
                     </div>
                     <div class="form-group">
-                        <input type="password" [value]="userDTO.pwd1" formControlName="pwd1" placeholder="Password" class="form-control input-underline input-md">
+                        <input type="password" [value]="userDTO.pwd1 || ''" formControlName="pwd1" placeholder="Password" class="form-control input-underline input-md">
                     </div>
                     <div class="form-group">
-                        <input type="password" [value]="userDTO.pwd2" formControlName="pwd2" placeholder="Password" class="form-control input-underline input-md">
+                        <input type="password" [value]="userDTO.pwd2 || ''" formControlName="pwd2" placeholder="Password" class="form-control input-underline input-md">
                     </div>
                 </div>
             </form>

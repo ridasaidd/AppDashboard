@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { routerTransition } from '../router.animations';
 import { AuthGuard } from '../shared/';
 
-import { NgForm } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { LoginDTO } from './../shared/dto/login-dto';
 
@@ -16,11 +16,16 @@ import { LoginDTO } from './../shared/dto/login-dto';
 export class LoginComponent implements OnInit {
 
     public credentials: LoginDTO;
+    public loginForm: FormGroup;
 
     constructor (public router: Router, public auth: AuthGuard) { }
 
     ngOnInit() {
         this.isLoggedIn();
+        this.loginForm = new FormGroup({
+          username: new FormControl('', Validators.required),
+          password: new FormControl()
+        });
     }
 
     private isLoggedIn(): void {
@@ -29,14 +34,23 @@ export class LoginComponent implements OnInit {
     }
     }
 
-    private doLogin(value): void {
-        this.credentials = value.form.value;
+    private doLogin(): void {
+        if (this.loginForm.valid) {
+         // console.log(this.loginForm.value);
+          if (this.auth.authenticate(this.loginForm.value)) {
+            console.log(this.loginForm.value);
+            this.router.navigate(['dashboard']);
+          } else {
+            alert('The user ' + this.loginForm.value.username + ' does not exist!');
+          }
+        }
+        /*this.credentials = value.form.value;
         if ( this.auth.authenticate(this.credentials) ) {
             this.router.navigateByUrl('/dashboard');
         } else {
             alert('User not found!');
-        }
-        }
+        }*/
+      }
 
     private isRegisterActive(): boolean {
         return false;
