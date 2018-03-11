@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
 
     public credentials: LoginDTO;
     public loginForm: FormGroup;
+    private err: string;
 
     constructor (public router: Router, public auth: AuthGuard) { }
 
@@ -37,16 +38,19 @@ export class LoginComponent implements OnInit {
     private doLogin(): void {
         if (this.loginForm.valid) {
           if (this.auth.authenticate(this.loginForm.value)) {
-            console.log(this.loginForm.value);
             this.router.navigate(['dashboard']);
           } else {
-            alert('The user ' + this.loginForm.value.username + ' does not exist!');
+            // alert('The user ' + this.loginForm.value.username + ' does not exist!');
+            this.err = "Wrong username or password!";
           }
         }
       }
 
     private isRegisterActive(): boolean {
         return false;
+    }
+    private closeAlert() {
+      this.err = undefined;
     }
 
 }

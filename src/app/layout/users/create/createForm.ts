@@ -6,7 +6,7 @@ export class CreateForm {
     // public createForm: CreateForm;
 
     constructor() {
-        const createForm = new FormGroup({
+        return new FormGroup({
             username: new FormControl('', Validators.required),
             email: new FormControl(),
             firstName: new FormControl(),
@@ -14,7 +14,7 @@ export class CreateForm {
             pwd1: new FormControl(),
             pwd2: new FormControl()
         });
-        return createForm;
+        // return createForm;
     }
 
 }

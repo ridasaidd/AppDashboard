@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlertComponent implements OnInit {
     alerts: Array<any> = [];
+    type = "warning";
     constructor() {
         this.alerts.push({
             id: 1,

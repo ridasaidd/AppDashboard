@@ -29,11 +29,12 @@ export class CreateComponent implements OnInit {
     this.edit();
   }
 
-  create(user) {
-    const newUser: UserDTO = user.form.value;
+  create(user.controls: UserDTO) {
+    console.log(user);
+    /*const newUser: UserDTO = user.form.value;
     if (this.user.create(newUser)) {
       this.router.navigate(['/users']);
-     }
+     }*/
   }
 
   private edit() {
