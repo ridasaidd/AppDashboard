@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate {
     public authenticate(user: LoginDTO): boolean {
         const theUser = this.user.getUserBy(user.username);
         if (this.isUser(theUser)) {
-            if (theUser.username === user.username && theUser.password === user.password) {
+            if (theUser.username === user.username && theUser.password.pwd1 === user.password) {
                 sessionStorage.setItem('user', JSON.stringify({username: theUser.username}));
                 sessionStorage.setItem('isLoggedin', 'true');
                 return true;

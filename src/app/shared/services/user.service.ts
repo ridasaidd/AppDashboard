@@ -9,27 +9,36 @@ export class UserService {
   private mock: UserDTO[] = [{
     username: 'coldfire',
     email: 'rida_538@hotmail.com',
-    firstName: 'rida',
-    lastName: 'said',
-    password: 'caramail',
-    pwd1: 'caramail',
-    pwd2: 'caramail'
+    name: {
+      first: 'Rida',
+      last: 'Said'
+    },
+    password: {
+      pwd1: 'caramail',
+      pwd2: 'caramail'
+    },
   }, {
     username: 'ridasaidd',
     email: 'rida_538@hotmail.com',
-    firstName: 'rida',
-    lastName: 'said',
-    password: 'caramail',
-    pwd1: 'caramail',
-    pwd2: 'caramail'
+    name: {
+      first: 'rida',
+      last: 'said',
+    },
+    password: {
+      pwd1: 'caramail',
+      pwd2: 'caramail'
+    },
   }, {
     username: 'adam',
     email: 'rida_538@hotmail.com',
-    firstName: 'Adam',
-    lastName: 'Adam',
-    password: 'caramail',
-    pwd1: 'caramail',
-    pwd2: 'caramail'
+    name: {
+      first: 'Adam',
+      last: 'Adam'
+    },
+    password: {
+      pwd1: 'caramail',
+      pwd2: 'caramail'
+    }
   }];
 
   constructor() { }
@@ -48,8 +57,7 @@ export class UserService {
   }
 
   public create(user: UserDTO): boolean {
-    if (user.pwd1 === user.pwd2) {
-      user.password = user.pwd1;
+    if (user.password.pwd1 === user.password.pwd2) {
       this.mock.push(user);
       return true;
     }

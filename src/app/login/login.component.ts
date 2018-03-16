@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['dashboard']);
           } else {
             // alert('The user ' + this.loginForm.value.username + ' does not exist!');
-            this.err = "Wrong username or password!";
+            this.err = 'Wrong username or password!';
           }
         }
       }
