@@ -2,20 +2,20 @@
   <app-page-header [heading]="heading" [icon]="'fa fa-plus'"></app-page-header>
     <div class="row">
         <div class="col-md-12">
-            <form [formGroup]="createForm" (ngSubmit)="create()">
+            <form [formGroup]="createForm" (ngSubmit)="create()" class="needs-validation" novalidate>
                 <div class="form-content">
                     <div class="form-group">
-                        <input type="text" formControlName="username" [value]="userDTO.username || ''" placeholder="Username" class="form-control input-underline input-md">
+                        <input type="text" formControlName="username" placeholder="Username" class="form-control input-underline input-md" required>
                     </div>
                     <div class="form-group">
                         <input type="email" formControlName="email" placeholder="E-mail" class="form-control input-underline input-md">
                     </div>
                     <div formGroupName="name">
                         <div class="form-group">
-                            <input type="text" formControlName="first" [value]="userDTO.name.first || ''" placeholder="First name" class="form-control input-underline input-md">
+                            <input type="text" formControlName="first" placeholder="First name" class="form-control input-underline input-md">
                         </div>
                         <div class="form-group">
-                            <input type="text"  formControlName="last" [value]="userDTO.name.last || ''" placeholder="Last name" class="form-control input-underline input-md">
+                            <input type="text"  formControlName="last" placeholder="Last name" class="form-control input-underline input-md">
                         </div>
                     </div>
                     <div formGroupName="password">
@@ -24,6 +24,7 @@
                         </div>
                         <div class="form-group">
                             <input type="password" formControlName="pwd2" placeholder="Password" class="form-control input-underline input-md">
+                            <div class="alert alert-danger" *ngIf="pwd2.errors?.matchOther">Password Mismatch</div>
                         </div>
                     </div>
                     <div class="for-group">
@@ -33,30 +34,9 @@
             </form>
             <div class="col-md-12">
                 {{ createForm.value | json }}
+                <br>
+                {{ createForm.valid | json }}
             </div>
-            <!--<form #CreateUserForm="ngForm" (ngSubmit)="create(CreateUserForm)">
-                <div class="form-content">
-                    <div class="form-group">
-                        <input type="text" name="username" class="form-control input-underline input-md" id="createFormUSername" placeholder="Username" [(ngModel)]="userDTO.username">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="firstName" class="form-control input-underline input-md" id="createFormFirstName" placeholder="First name" [(ngModel)]="userDTO.firstName">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="lastName" class="form-control input-underline input-md" id="createFormLastName" placeholder="Last name" [(ngModel)]="userDTO.lastName">
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" class="form-control input-underline input-md" id="createFormEmail" placeholder="E-mail" [(ngModel)]="userDTO.email">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" name="pwd1" class="form-control input-underline input-md" id="createFormPwd1" placeholder="password" [(ngModel)]="userDTO.pwd1">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" name="pwd2" class="form-control input-underline input-md" id="createFormPwd2" placeholder="password" [(ngModel)]="userDTO.pwd2">
-                    </div>
-                </div>
-                <button class="button" type="submit">Submit</button>
-            </form>-->
         </div>
     </div>
 </div>
