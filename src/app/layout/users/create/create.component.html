@@ -2,40 +2,82 @@
   <app-page-header [heading]="heading" [icon]="'fa fa-plus'"></app-page-header>
     <div class="row">
         <div class="col-md-12">
-            <form [formGroup]="createForm" (ngSubmit)="create()" class="needs-validation" novalidate>
+            <form [formGroup]="createForm" (ngSubmit)="create()" novalidate class="needs-validation">
                 <div class="form-content">
                     <div class="form-group">
-                        <input type="text" formControlName="username" placeholder="Username" class="form-control input-underline input-md" required>
+                        <label for="createUserUserName">Username</label>
+                        <input type="text" formControlName="username" placeholder="Username" class="form-control input-underline input-md" id="createUserUserName" [ngClass]="{
+                          'is-valid': userName.dirty && userName.valid,
+                          'is-invalid': userName.dirty && !userName.valid
+                        }" required>
+                        <div class="valid-feedback">
+                            <p>Ser bra ut!</p>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <input type="email" formControlName="email" placeholder="E-mail" class="form-control input-underline input-md">
+                        <label for="createUserEmail">E-mail</label>
+                        <input type="email" formControlName="email" id="createUserEmail" placeholder="E-mail" class="form-control input-underline input-md" [ngClass]="{
+                            'is-valid': email.dirty && email.valid,
+                            'is-invalid': email.dirty && !email.valid
+                        }" required>
+                        <div class="valid-feedback">
+                          <p>Ser bra ut!</p>
+                        </div>
                     </div>
                     <div formGroupName="name">
                         <div class="form-group">
-                            <input type="text" formControlName="first" placeholder="First name" class="form-control input-underline input-md">
+                            <label for="createUserFirstName">First name</label>
+                            <input type="text" formControlName="first" id="createUserFirstName" placeholder="First name" class="form-control input-underline input-md" [ngClass]="{
+                              'is-valid': name.controls['first'].dirty && name.controls['first'].valid,
+                              'is-invalid': name.controls['first'].dirty && !name.controls['first'].valid
+                            }" required>
+                            <div class="valid-feedback">
+                                <p>Ser bra ut!</p>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <input type="text"  formControlName="last" placeholder="Last name" class="form-control input-underline input-md">
+                            <label for="createUserLastName">Last name</label>
+                            <input type="text"  formControlName="last" id="createUserLastName" placeholder="Last name" class="form-control input-underline input-md" [ngClass]="{
+                              'is-valid': name.controls['last'].dirty && name.controls['last'].valid,
+                              'is-invalid': name.controls['last'].dirty && !name.controls['last'].valid
+                            }" required>
+                            <div class="valid-feedback">
+                                <p>Ser bra ut!</p>
+                            </div>
                         </div>
                     </div>
                     <div formGroupName="password">
                         <div class="form-group">
-                            <input type="password" formControlName="pwd1" placeholder="Password" class="form-control input-underline input-md">
+                            <label for="createUserPwd1">Password</label>
+                            <input type="password" formControlName="pwd1" id="createUserPwd1" placeholder="Password" class="form-control input-underline input-md" [ngClass]="{
+                              'is-valid': password.controls['pwd1'].dirty && password.controls['pwd1'].valid,
+                              'is-invalid': password.controls['pwd1'].dirty && !password.controls['pwd1'].valid
+                            }" required>
+                            <div class="valid-feedback">
+                                <p>Ser bra ut!</p>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <input type="password" formControlName="pwd2" placeholder="Password" class="form-control input-underline input-md">
+                            <label for="createUserPwd2">Repeat password</label>
+                            <input type="password" formControlName="pwd2" id="createUserPwd2" placeholder="Password" class="form-control input-underline input-md" [ngClass]="{
+                              'is-valid': password.controls['pwd2'].dirty && password.controls['pwd2'].valid,
+                              'is-invalid': password.controls['pwd2'].dirty && !password.controls['pwd2'].valid
+                            }" required>
+                            <div class="valid-feedback">
+                                <p>Ser bra ut!</p>
+                            </div>
                             <div class="alert alert-danger" *ngIf="pwd2.errors?.matchOther">Password Mismatch</div>
                         </div>
                     </div>
                     <div class="for-group">
-                        <button class="btn btn-default" type="submit">submit</button>
+                        <button class="btn btn-default" type="submit" [disabled]="!createForm.valid">submit</button>
                     </div>
                 </div>
             </form>
             <div class="col-md-12">
                 {{ createForm.value | json }}
                 <br>
-                {{ createForm.valid | json }}
+                {{ name.controls['first'].valid | json }}
             </div>
         </div>
     </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import {routerTransition } from './../../../router.animations';
+import { routerTransition } from './../../../router.animations';
 
 import { UserService } from './../../../shared';
 import { UserDTO } from './../../../shared/dto/user-dto';
@@ -39,10 +39,14 @@ export class CreateComponent implements OnInit {
       ]],
       name: this.fb.group({
         first: ['', [
-          Validators.required
+          Validators.required,
+          Validators.maxLength(12),
+          Validators.minLength(2)
         ]],
         last: ['', [
-          Validators.required
+          Validators.required,
+          Validators.maxLength(12),
+          Validators.minLength(2)
         ]]
       }),
       password: this.fb.group({
@@ -86,5 +90,18 @@ export class CreateComponent implements OnInit {
   }
   get pwd2() {
     return this.createForm.get('password').get('pwd2');
+  }
+ 
+  private get userName() {
+    return this.createForm.get('username');
+  }
+  private get email() {
+    return this.createForm.get('email');
+  }
+  private get name() {
+    return this.createForm.get('name');
+  }
+  private get password() {
+    return this.createForm.get('password');
   }
 }

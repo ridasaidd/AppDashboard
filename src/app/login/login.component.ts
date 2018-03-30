@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
           if (this.auth.authenticate(this.loginForm.value)) {
             this.router.navigate(['dashboard']);
           } else {
-            // alert('The user ' + this.loginForm.value.username + ' does not exist!');
             this.err = 'Wrong username or password!';
           }
         }
@@ -52,5 +51,4 @@ export class LoginComponent implements OnInit {
     private closeAlert() {
       this.err = undefined;
     }
-
 }
